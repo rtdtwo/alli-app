@@ -1,32 +1,26 @@
-import { StyleSheet } from 'react-native';
-import { DefaultTheme, Provider as PaperProvider, Appbar } from 'react-native-paper';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeScreen from './screens/HomeScreen';
+import theme from './themes';
+import { Provider as PaperProvider } from 'react-native-paper';
+
+const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
     <PaperProvider theme={theme}>
-      <Appbar style={styles.appbar}>
-        
-      </Appbar>
+      <NavigationContainer>
+        <Stack.Navigator>
+
+          <Stack.Screen
+            name="Home"
+            options={{ headerTitle: 'Home' }}
+            component={HomeScreen} />
+
+        </Stack.Navigator>
+      </NavigationContainer>
     </PaperProvider>
   );
 }
-
-const theme = {
-  ...DefaultTheme,
-  colors: {
-    ...DefaultTheme.colors,
-    primary: 'tomato',
-    accent: 'yellow',
-  },
-};
-
-const styles = StyleSheet.create({
-  appbar: {
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    top: 0,
-  }
-});
 
 export default App
