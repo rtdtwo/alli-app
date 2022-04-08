@@ -1,10 +1,23 @@
-import { View } from "react-native"
+import { View,Button,Text, Image} from "react-native"
+import * as goTo from '../pages/goTo';
+import croc from '../assets/croc.png';
+import './login.css'
 
 const Login = () => {
     return ( 
-    <View> 
-        <Image source={require('../assets/croc.png')} />
-    </View>
+
+        <View>
+
+        <Button title={'Go Back'}
+                onPress={() => goTo.navigate('Home', { userName: 'Lucy' })} /> 
+        <img src={croc}
+            width={50}
+            height={50}
+         />
+
+        </View> 
+
+
 
     );
 }

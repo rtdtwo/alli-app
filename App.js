@@ -4,13 +4,14 @@ import HomeScreen from './screens/HomeScreen';
 import theme from './themes';
 import { Provider as PaperProvider } from 'react-native-paper';
 import Login from './screens/Login';
+import { navigationRef } from './pages/goTo';
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
     <PaperProvider theme={theme}>
-      <NavigationContainer>
+      <NavigationContainer ref={navigationRef}>
         <Stack.Navigator>
 
           <Stack.Screen

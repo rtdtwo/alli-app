@@ -1,11 +1,7 @@
 import * as React from 'react';
-import { Button } from 'react-native';
 
-function GoToButton({ navigation, screenName }) {
-  return (
-    <Button
-      title={`Go to ${screenName}`}
-      onPress={() => navigation.navigate(screenName)}
-    />
-  );
+export const navigationRef = React.createRef();
+
+export function navigate(name, params) {
+  navigationRef.current?.navigate(name, params);
 }
