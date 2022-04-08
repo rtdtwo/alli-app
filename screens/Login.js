@@ -1,7 +1,7 @@
 import { View,Button,Text, Image} from "react-native"
 import * as goTo from '../pages/goTo';
 import croc from '../assets/croc.png';
-import './login.css'
+import styles from './login.css'
 
 const Login = () => {
     return ( 
