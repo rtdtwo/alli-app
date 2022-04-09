@@ -24,6 +24,10 @@ const Login = () => {
 
             <TextInput style={styles.textBox} onChangeText={onChangeText}value={text}/>
             <TextInput style={styles.textBox} onChangeText={onChangeText2}value={text2}/>
+
+            <Button style={styles.buttonStyle}
+            title="Login?"
+            >test</Button>
              
              
 

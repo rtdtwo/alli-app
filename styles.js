@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     fontWeight: 'normal',
     maxWidth: 160,  
     marginTop: 20,
-    marginBottom: 50,
+    marginBottom: 30,
   },
   gata: {
     alignSelf: 'center',
@@ -35,11 +35,19 @@ const styles = StyleSheet.create({
   textBox: {
     alignSelf: 'center',
     justifyContent: 'center',
-    marginTop:15,
+    marginTop:5,
+    marginBottom:15,
     fontSize:20,
     borderWidth: 1,
     minWidth: 250,
     padding:10
+  },
+  buttonStyle: {
+    alignSelf: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding:10,
+    maxWidth: 250,
   }
 })
 
