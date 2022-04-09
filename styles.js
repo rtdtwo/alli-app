@@ -19,9 +19,9 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     textAlign: 'center',
     justifyContent: 'center',
-    fontSize: 25,
+    fontSize: 20,
     fontWeight: 'normal',
-    maxWidth: 150,  
+    maxWidth: 160,  
     marginTop: 10,
   },
   test: {
