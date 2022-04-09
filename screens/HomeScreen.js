@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Button, TouchableOpacity} from 'react-native';
+import {View, Button, TouchableOpacity,Image} from 'react-native';
 import * as goTo from '../pages/goTo';
 
 

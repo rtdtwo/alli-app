@@ -1,18 +1,32 @@
-import { View,Button,Text, Image} from "react-native"
+import { View,Button,Text,Image,TextInput} from "react-native"
 import * as goTo from '../pages/goTo';
-import croc from '../assets/croc.png'
 import styles from "../styles";
+import React from 'react';
+
 
 const Login = () => {
+    const [text, onChangeText] = React.useState("Some Email");
+    const [text2, onChangeText2] = React.useState("A password");
+
     return ( 
 
         <View>
 
-        <Button title={'Go Back'}
-                onPress={() => goTo.navigate('Home', { userName: 'Lucy' })} /> 
-        <Image resizeMode="cover" style={[styles.me,{width:60,height:60}]} source={{uri: 'https://static.pexels.com/photos/213117/pexels-photo-213117.jpeg'}}/>
-        <Text style={styles.title}>Ali</Text>
-        <Text style={styles.title2}>Chomp Away Bad Habbits</Text>
+            <Button title={'Go Back'}
+                    onPress={() => goTo.navigate('Home', { userName: 'Lucy' })} /> 
+            <Image source={require('../assets/croc.png')} 
+            style={styles.gata}         
+            />
+
+
+            <Text style={styles.title}>Ali</Text>
+            <Text style={styles.title2}>Chomp Away Bad Habbits</Text>
+
+            <TextInput style={styles.textBox} onChangeText={onChangeText}value={text}/>
+            <TextInput style={styles.textBox} onChangeText={onChangeText2}value={text2}/>
+             
+             
+
 
         </View> 
 

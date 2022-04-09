@@ -9,11 +9,11 @@ import { navigationRef } from './pages/goTo';
 const Stack = createNativeStackNavigator();
 
 const App = () => {
+  console.log(require('./assets/croc.png'));
   return (
     <PaperProvider theme={theme}>
       <NavigationContainer ref={navigationRef}>
         <Stack.Navigator>
-
           <Stack.Screen
             name="Home"
             options={{ headerTitle: 'Home' }}

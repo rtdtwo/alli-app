@@ -11,9 +11,9 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     textAlign: 'center',
     justifyContent: 'center',
-    fontSize: 55,
+    fontSize: 60,
     fontWeight: 'bold',
-    marginTop: 10,
+    marginTop: 30,
   },
   title2: {
     alignSelf: 'center',
@@ -22,11 +22,24 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'normal',
     maxWidth: 160,  
-    marginTop: 10,
+    marginTop: 20,
+    marginBottom: 50,
   },
-  test: {
+  gata: {
     alignSelf: 'center',
     justifyContent: 'center',
+    width:70,
+    height:70,
+    marginTop: 35,
+  },
+  textBox: {
+    alignSelf: 'center',
+    justifyContent: 'center',
+    marginTop:15,
+    fontSize:20,
+    borderWidth: 1,
+    minWidth: 250,
+    padding:10
   }
 })
 
