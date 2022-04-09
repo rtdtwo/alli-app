@@ -8,10 +8,25 @@ const styles = StyleSheet.create({
     top: 0
   },
   title: {
-    borderRadius: 30,
+    alignSelf: 'center',
+    textAlign: 'center',
     justifyContent: 'center',
-    alignContent: 'center',
-    alignItems: 'center',
+    fontSize: 55,
+    fontWeight: 'bold',
+    marginTop: 10,
+  },
+  title2: {
+    alignSelf: 'center',
+    textAlign: 'center',
+    justifyContent: 'center',
+    fontSize: 25,
+    fontWeight: 'normal',
+    maxWidth: 150,  
+    marginTop: 10,
+  },
+  test: {
+    alignSelf: 'center',
+    justifyContent: 'center',
   }
 })
 

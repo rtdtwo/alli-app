@@ -1,10 +1,12 @@
 import React from 'react';
-import {View, Button} from 'react-native';
+import {View, Button, TouchableOpacity} from 'react-native';
 import * as goTo from '../pages/goTo';
 
 
+
 const HomeScreen = () => {
-    return <View>
+    return ( 
+    <View>
         <Button
         title={'Go to'}
         onPress={() =>
@@ -12,6 +14,11 @@ const HomeScreen = () => {
         }
       />
     </View>
+
+  
+  );
 }
 
+
 export default HomeScreen
+
