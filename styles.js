@@ -40,15 +40,17 @@ const styles = StyleSheet.create({
     fontSize:20,
     borderWidth: 1,
     minWidth: 250,
-    padding:10
+    padding:10,
+    width: '40%'
   },
   buttonStyle: {
+    marginTop: 10,
+    width: '65%',
     alignSelf: 'center',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding:10,
-    maxWidth: 250,
-  }
+  },
+  formWrapper:{
+    alignSelf: 'center',
+  },
 })
 
 export default styles
