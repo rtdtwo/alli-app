@@ -33,24 +33,40 @@ const styles = StyleSheet.create({
     marginTop: 35,
   },
   textBox: {
-    alignSelf: 'center',
-    justifyContent: 'center',
     marginTop:5,
     marginBottom:15,
     fontSize:20,
     borderWidth: 1,
-    minWidth: 250,
     padding:10,
-    width: '40%'
+    width: '42%',
   },
   buttonStyle: {
     marginTop: 10,
-    width: '65%',
+    width: '60%',
+    padding:10,
     alignSelf: 'center',
   },
   formWrapper:{
-    alignSelf: 'center',
+    flexDirection: 'row',
+    alignItems:'center',
+    justifyContent:'center'
   },
+  custTextsize:{
+    marginTop:5,
+    marginBottom:15,
+    fontSize:20,
+    borderWidth: 1,
+    padding:10,
+    width: '64%',
+  },
+  age:{
+    marginTop:5,
+    marginBottom:15,
+    fontSize:20,
+    borderWidth: 1,
+    padding:10,
+    width: '20%',
+  }
 })
 
 export default styles

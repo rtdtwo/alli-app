@@ -1,4 +1,4 @@
-import { View,Button,Text,Image,TextInput,Alert} from "react-native"
+import { View,Button,Text,Image,TextInput,Alert,Picker} from "react-native"
 import { useForm, Controller } from "react-hook-form";
 import * as goTo from '../pages/goTo';
 import styles from "../styles";
@@ -14,6 +14,21 @@ export function Login (){
         }
     });
 
+    const options = [
+        {
+          label: "Male",
+          value: "M",
+        },
+        {
+          label: "Female",
+          value: "F",
+        },
+        {
+          label: "Other",
+          value: "X",
+        },
+      ];
+ 
     const onSubmit = data => console.log(data);
     console.log("test");
 
@@ -30,7 +45,7 @@ export function Login (){
                 <Controller
                     control={control}
                     rules={{
-                    required: true,
+                    maxLength: 100,
                     }}
                     render={({ field: { onChange, onBlur, value } }) => (
                     <TextInput
@@ -38,13 +53,12 @@ export function Login (){
                         onBlur={onBlur}
                         onChangeText={onChange}
                         value={value}
-                        placeholder={"email"}
+                        placeholder={"First"}
                     />
                     )}
                     name="firstName"
                 />
                 {errors.firstName && <Text>This is required.</Text>}
-
                 <Controller
                     control={control}
                     rules={{
@@ -56,14 +70,49 @@ export function Login (){
                         onBlur={onBlur}
                         onChangeText={onChange}
                         value={value}
-                        placeholder={"password"}
+                        placeholder={"Last"}
                     />
                     )}
                     name="lastName"
                 />
- 
             </View>
-            <View style={styles.buttonStyle}>
+            <View style={styles.formWrapper}>
+            <Controller
+                    control={control}
+                    rules={{
+                    required: true,
+                    }}
+                    render={({ field: { onChange, onBlur, value } }) => (
+                    <TextInput
+                        style={styles.custTextsize}
+                        onBlur={onBlur}
+                        onChangeText={onChange}
+                        value={value}
+                        placeholder={"email"}
+                    />
+                    )}
+                    name="email"
+                />
+                <Controller
+                    control={control}
+                    rules={{
+                    required: true,
+                    }}
+                    render={({ field: { onChange, onBlur, value } }) => (
+                    <TextInput
+                        style={styles.age}
+                        onBlur={onBlur}
+                        onChangeText={onChange}
+                        value={value}
+                        placeholder={"Age"}
+                    />
+                    )}
+                    name="Age"
+                />
+            </View>
+        
+        
+         <View style={styles.buttonStyle}>
             <Button
                 title="Submit" onPress={handleSubmit(onSubmit)} />
             </View>
