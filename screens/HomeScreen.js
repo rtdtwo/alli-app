@@ -16,12 +16,12 @@ const HomeScreen = () => {
                 console.log(e)
                 setCurrentUser(null)
             })
-    })
+    })ß
 
     useEffect(() => {
         API.getAllGoalsOfUser()
-        .then(response => setGoals(response.data))
-        .catch(error => console.log(`Error Occurred - ${error.code}: ${error.msg}`))
+            .then(response => setGoals(response.data))
+            .catch(error => console.log(`Error Occurred - ${error.code}: ${error.msg}`))
     }, [])
     return <View>
     </View>
