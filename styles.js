@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     fontSize: 60,
     fontWeight: 'bold',
-    marginTop: 30,
+    marginTop: 20,
   },
   title2: {
     alignSelf: 'center',
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'normal',
     maxWidth: 160,  
-    marginTop: 20,
+    marginTop: 8,
     marginBottom: 30,
   },
   gata: {
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width:70,
     height:70,
-    marginTop: 35,
+    marginTop: 25,
   },
   textBox: {
     marginTop:5,
@@ -38,18 +38,18 @@ const styles = StyleSheet.create({
     fontSize:20,
     borderWidth: 1,
     padding:10,
-    width: '42%',
   },
   buttonStyle: {
-    marginTop: 10,
-    width: '60%',
-    padding:10,
+    position: 'absolute',
     alignSelf: 'center',
+    bottom:5,
+    left:20,
+    width: '90%',
   },
   formWrapper:{
+    display: 'flex',
     flexDirection: 'row',
-    alignItems:'center',
-    justifyContent:'center'
+    justifyContent: 'center',
   },
   custTextsize:{
     marginTop:5,
