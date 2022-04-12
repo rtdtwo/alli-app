@@ -22,19 +22,30 @@ export function Login (){
 
     console.log("test");
 
+    const jsonUserData = (data) => {
+        const body = {
+            fName: data.firstName,
+            lName: data.lastName,
+            age: parseInt(data.Age),
+            email: data.email,
+            sex: parseInt(data.sex),
+        }
+    }
+
+
+
+
     return ( 
 
             <Fragment>
         
                 <View>
-                    <Button title={'Go Back'}
-                    onPress={() => goTo.navigate('Home', { userName: 'Lucy' })} /> 
-                    <Image source={require('../assets/croc.png')} style={styles.gata}/>
-                    <Text style={styles.title}>Ali</Text>
-                    <Text style={styles.title2}>Chomp Away Bad Habbits</Text>
+                    <Text style={styles.title}>Hello!</Text>
+                    <Text style={styles.title2}>Let's Get Started.</Text>
 
                  </View>
 
+                <View style={styles.form}>
                 <FormBuilder
                 control={control}
                 setFocus={setFocus}
@@ -53,7 +64,6 @@ export function Login (){
                             message: 'First name is required',
                         },
                         },
-                        flex: 1.5,
                     },
                     {
                         name: 'lastName',
@@ -68,7 +78,6 @@ export function Login (){
                             message: 'Last name is required',
                         },
                         },
-                        flex: 1,
                     },
                     ],
                     {
@@ -99,10 +108,10 @@ export function Login (){
                     },
                     },
                     {
-                    name: 'gender',
+                    name: 'sex',
                     type: 'select',
                     textInputProps: {
-                        label: 'Gender',
+                        label: 'Sex',
                         left: <TextInput.Icon name={'account'} />,
                     },
                     rules: {
@@ -129,15 +138,18 @@ export function Login (){
                     
                 ]}
                 />
+                </View>
                 <View style={styles.buttonStyle}>
                 <Button 
-                title="Submit" mode={'contained'} onPress={handleSubmit(console.log)}>
+                title="Submit" mode={'contained'} onPress={handleSubmit((data => console.log(data)))}>
                 Submit
                 </Button>
                 </View>
             </Fragment> 
     );
 }
+
+
 
 
 export default Login

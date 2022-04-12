@@ -32,18 +32,14 @@ const styles = StyleSheet.create({
     height:70,
     marginTop: 25,
   },
-  textBox: {
+  form: {
     marginTop:5,
     marginBottom:15,
     fontSize:20,
-    borderWidth: 1,
-    padding:10,
+    padding:24,
   },
   buttonStyle: {
-    position: 'absolute',
     alignSelf: 'center',
-    bottom:5,
-    left:20,
     width: '90%',
   },
   formWrapper:{
