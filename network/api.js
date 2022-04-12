@@ -1,6 +1,7 @@
 const SERVER_URL = 'https://localhost:5000'
 
 const ENDPOINTS = {
+    signup: '/signup',
     user: '/user',
     goal: '/goal'
 }
@@ -43,8 +44,8 @@ const APIS = {
     getUserById: (id) => {
         return callGet(`${SERVER_URL}${ENDPOINTS.user}/${id}`)
     },
-    createUser: (data) => {
-        return callPost(`${SERVER_URL}${ENDPOINTS.user}`, data)
+    signUp: (data) => {
+        return callPost(`${SERVER_URL}${ENDPOINTS.signup}`, data)
     },
     getGoalById: (id) => {
         return callGet(`${SERVER_URL}${ENDPOINTS.goal}/${id}`)
