@@ -1,11 +1,11 @@
 import React from 'react';
-import { View } from "react-native"
-import { useEffect, useState } from "react/cjs/react.production.min"
 import { getCurrentUser } from '../storage/storage'
 import { View, Button, TouchableOpacity, Image } from 'react-native';
 import * as goTo from '../pages/goTo';
 
 import API from '../network/api'
+import { useState } from 'react/cjs/react.development';
+import { useEffect } from 'react/cjs/react.development';
 
 const HomeScreen = () => {
 
@@ -45,8 +45,6 @@ const HomeScreen = () => {
         }
       />
     </View>
-
-
   );
 }
 
