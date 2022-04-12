@@ -25,6 +25,7 @@ const App = () => {
             component={HomeScreen} />
           <Stack.Screen
             name="Login"
+            options={{ headerShown: false }}
             component={Login} />
         </Stack.Navigator>
       </NavigationContainer>

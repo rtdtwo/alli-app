@@ -1,6 +1,6 @@
 import React from 'react';
 import { getCurrentUser } from '../storage/storage'
-import { View, Button, TouchableOpacity, Image } from 'react-native';
+import { View, Button } from 'react-native';
 import * as goTo from '../pages/goTo';
 
 import API from '../network/api'
@@ -13,6 +13,7 @@ const HomeScreen = () => {
   const [currentUser, setCurrentUser] = useState(null)
 
   useEffect(() => {
+    // See if user is logged in
     getCurrentUser()
       .then(user => {
         if(user) {
