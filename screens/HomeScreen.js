@@ -16,7 +16,7 @@ const HomeScreen = () => {
                 console.log(e)
                 setCurrentUser(null)
             })
-    })ß
+    })
 
     useEffect(() => {
         API.getAllGoalsOfUser()
