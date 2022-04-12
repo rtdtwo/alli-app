@@ -19,12 +19,12 @@ const HomeScreen = () => {
           setCurrentUser(user)
         } else {
           // no user logged in, send to Login screen
-          goTo.navigate('Login')
+          goTo.replace('Login')
         }
       })
       .catch(e => {
         console.log(e)
-        setCurrentUser(null)
+        goTo.replace('Login')
       })
   }, [])
 
