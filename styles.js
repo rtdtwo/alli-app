@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native"
 
+
 const styles = StyleSheet.create({
   appbar: {
     position: 'absolute',
@@ -7,12 +8,28 @@ const styles = StyleSheet.create({
     right: 0,
     top: 0
   },
+  verticalCenter: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex:1
+  },
+  splashTitle: {
+    alignSelf: 'center',
+    textAlign: 'center',
+    justifyContent: 'center',
+    fontSize: 60,
+  },
+  splashSubhead: {
+    alignSelf: 'center',
+    textAlign: 'center',
+    justifyContent: 'center',
+    fontSize: 20,
+  },
   title: {
     alignSelf: 'center',
     textAlign: 'center',
     justifyContent: 'center',
     fontSize: 60,
-    fontWeight: 'bold',
     marginTop: 20,
   },
   title2: {
