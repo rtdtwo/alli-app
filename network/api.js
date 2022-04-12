@@ -1,4 +1,5 @@
-const SERVER_URL = 'https://localhost:5000'
+// const SERVER_URL = 'http://localhost:4000'
+const SERVER_URL = 'https://dhp2022-backend.herokuapp.com'
 
 const ENDPOINTS = {
     signup: '/signup',
