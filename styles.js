@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     justifyContent: 'center',
     fontSize: 60,
-    marginTop: 20,
+    marginTop: 80,
   },
   title2: {
     alignSelf: 'center',
