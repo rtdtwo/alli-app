@@ -10,7 +10,7 @@ import Goal from "../components/Goal"
 
 const Goals = () => {
     const [goals, setGoals] = React.useState(undefined)
-    const [showCreateModal, setShowCreateModal] = React.useState(false) 
+    const [showCreateModal, setShowCreateModal] = React.useState(false)
     const [userId, setUserId] = React.useState(undefined)
 
     const hideCreateModal = () => {
@@ -32,19 +32,20 @@ const Goals = () => {
         setShowCreateModal(false)
         setGoals(undefined)
         API.getAllGoalsOfUser(id)
-                        .then(response => setGoals(response.data))
-                        .catch(error => console.log(`Error Occurred - ${error.code}: ${error.msg}`))
+            .then(response => setGoals(response.data))
+            .catch(error => console.log(`Error Occurred - ${error.code}: ${error.msg}`))
     }
 
     return <Provider theme={theme}>
         {
-            goals ? goals.length > 0
-                ? goals.map(goal => <Goal data={goal} />)
-                : <View style={styles.verticalCenter}>
-                    <Text style={styles.splashMessageTitle}>No goals here</Text>
-                    <Text style={styles.splashMessageText}>Create a goal now and take control of your addictions!</Text>
-                </View>
-                :  <ActivityIndicator animating={true} color={theme.colors.accent} size='large' style={styles.verticalCenter}/>
+            goals ?
+                goals.length > 0
+                    ? goals.map(goal => <Goal key={goal.id} data={goal} />)
+                    : <View style={styles.verticalCenter}>
+                        <Text style={styles.splashMessageTitle}>No goals here</Text>
+                        <Text style={styles.splashMessageText}>Create a goal now and take control of your addictions!</Text>
+                    </View>
+                : <ActivityIndicator animating={true} color={theme.colors.accent} size='large' style={styles.verticalCenter} />
         }
         <FAB
             style={styles.fabBottomRight}
@@ -54,7 +55,7 @@ const Goals = () => {
             onPress={() => setShowCreateModal(true)}
         />
 
-        <CreateGoal visible={showCreateModal} onDismiss={hideCreateModal} userId={userId} refresh={refreshGoals}/>
+        <CreateGoal visible={showCreateModal} onDismiss={hideCreateModal} userId={userId} refresh={refreshGoals} />
 
     </Provider>
 }
