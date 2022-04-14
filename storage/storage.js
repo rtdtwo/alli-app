@@ -30,11 +30,21 @@ const getValue = async (key) => {
     }
 }
 
+const deleteItem = async (key) => {
+    try {
+        await AsyncStorage.removeItem(key)
+        return true
+    } catch(e) {
+        console.log(e)
+        return false
+    }
+}
+
 const getObject = async (key) => {
     try {
         const value = await AsyncStorage.getItem(key)
         if(value != null) {
-            return JSON.stringify(value)
+            return JSON.parse(value)
         } else {
             return null
         }
@@ -69,4 +79,12 @@ export const getGoal = (id) => {
             return null
         }
     })
+}
+
+export const clearAllGoals = () => {
+    deleteItem(KEYS.goals)
+}
+
+export const clearCurrentUser = () => {
+    deleteItem(KEYS.user)
 }

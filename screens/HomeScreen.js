@@ -1,22 +1,24 @@
 import React from 'react';
 import { getCurrentUser } from '../storage/storage'
-import { View, Button } from 'react-native';
-import * as goTo from '../pages/goTo';
+import { View, Button, Image } from 'react-native';
+import * as goTo from './goTo';
 
-import API from '../network/api'
-import { useState } from 'react/cjs/react.development';
-import { useEffect } from 'react/cjs/react.development';
+import { Provider, BottomNavigation, Appbar, IconButton } from 'react-native-paper';
+import styles from '../theme/styles';
+import theme from '../theme/themes';
+
+import appLogo from '../assets/croc.png'
+import Goals from '../fragments/Goals';
 
 const HomeScreen = () => {
 
-  const [goals, setGoals] = useState([])
-  const [currentUser, setCurrentUser] = useState(null)
+  const [currentUser, setCurrentUser] = React.useState(undefined)
 
-  useEffect(() => {
+  React.useEffect(() => {
     // See if user is logged in
     getCurrentUser()
       .then(user => {
-        if(user) {
+        if (user) {
           setCurrentUser(user)
         } else {
           // no user logged in, send to Login screen
@@ -29,23 +31,45 @@ const HomeScreen = () => {
       })
   }, [])
 
-  useEffect(() => {
-    if (currentUser !== null) {
-      API.getAllGoalsOfUser(currentUser.id)
-        .then(response => setGoals(response.data))
-        .catch(error => console.log(`Error Occurred - ${error.code}: ${error.msg}`))
-    }
-  }, [currentUser])
+
+  const ROUTES = {
+    dashboard: () => <View />,
+    goals: () => <Goals />,
+    mood: () => <View />,
+    milestones: () => <View />,
+    social: () => <View />,
+  }
+
+  const [index, setIndex] = React.useState(0);
+  const [routes] = React.useState([
+    { key: 'dashboard', title: 'Dashboard', icon: 'view-dashboard-outline' },
+    { key: 'goals', title: 'Goals', icon: 'bullseye-arrow' },
+    { key: 'mood', title: 'Mood', icon: 'emoticon-outline' },
+    { key: 'milestones', title: 'Milestones', icon: 'flag-checkered' },
+    { key: 'social', title: 'Social', icon: 'account-group-outline' }
+  ])
+  const renderScene = BottomNavigation.SceneMap(ROUTES)
 
   return (
-    <View>
-      <Button
-        title={'Go to'}
-        onPress={() =>
-          goTo.navigate('Login', { userName: 'Lucy' })
-        }
-      />
-    </View>
+    <Provider theme={theme}>
+      <Appbar.Header>
+        <Image
+          source={appLogo}
+          style={styles.appbarLogo} />
+
+        <IconButton
+          icon={'account-circle-outline'}
+          color='gray'
+          style={styles.appbarProfile}
+          onPress={() => goTo.navigate('Profile')} />
+      </Appbar.Header>
+
+      <BottomNavigation
+        navigationState={{ index, routes }}
+        onIndexChange={setIndex}
+        renderScene={renderScene} />
+
+    </Provider>
   );
 }
 
