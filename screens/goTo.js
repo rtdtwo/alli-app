@@ -10,3 +10,7 @@ export const navigate = (name, params) => {
 export const replace = (name, params) => {
   navigationRef.current?.dispatch(StackActions.replace(name, params))
 }
+
+export const goBack = () => {
+  navigationRef.current?.goBack(null)
+}

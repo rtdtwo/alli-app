@@ -1,16 +1,16 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './screens/HomeScreen';
-import theme from './themes';
+import theme from './theme/themes';
 import { Provider as PaperProvider } from 'react-native-paper';
 import Login from './screens/Login';
-import { navigationRef } from './pages/goTo';
+import { navigationRef } from './screens/goTo';
 import Splash from './screens/Splash';
+import Profile from './screens/Profile';
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
-  console.log(require('./assets/croc.png'));
   return (
     <PaperProvider theme={theme}>
       <NavigationContainer ref={navigationRef}>
@@ -21,12 +21,16 @@ const App = () => {
             component={Splash} />
           <Stack.Screen
             name="Home"
-            options={{ headerTitle: 'Home' }}
+            options={{ headerShown: false }}
             component={HomeScreen} />
           <Stack.Screen
             name="Login"
             options={{ headerShown: false }}
             component={Login} />
+          <Stack.Screen
+            name="Profile"
+            options={{ headerShown: false }}
+            component={Profile} />
         </Stack.Navigator>
       </NavigationContainer>
     </PaperProvider>
