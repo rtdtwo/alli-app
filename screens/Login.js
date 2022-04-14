@@ -2,7 +2,7 @@ import { View, Button, Text, Image } from "react-native";
 import { FormBuilder } from 'react-native-paper-form-builder';
 import { TextInput, Snackbar } from 'react-native-paper';
 import { useForm } from "react-hook-form";
-import styles from "../theme/styles";
+import styles from  '../theme/styles'
 import React, { Fragment } from 'react';
 import * as goTo from './goTo';
 import API from "../network/api"
@@ -76,10 +76,12 @@ export function Login() {
                 <Text style={styles.title2}>Let's Get Started.</Text>
             </View>
 
-            <View style={styles.form}>
+            <View style={styles.form}
+            >
                 <FormBuilder
                     control={control}
                     setFocus={setFocus}
+                    activeOutlineColor={'#4cd137'}
                     formConfigArray={[
                         [
                             {
@@ -87,6 +89,7 @@ export function Login() {
                                 type: 'text',
                                 textInputProps: {
                                     label: 'First Name',
+                                    activeOutlineColor: '#4cd137',
                                     left: <TextInput.Icon name={'account'} />,
                                 },
                                 rules: {
@@ -101,6 +104,7 @@ export function Login() {
                                 type: 'text',
                                 textInputProps: {
                                     label: 'Last Name',
+                                    activeOutlineColor: '#4cd137',
                                     left: <TextInput.Icon name={'account'} />,
                                 },
                                 rules: {
@@ -116,6 +120,7 @@ export function Login() {
                             type: 'email',
                             textInputProps: {
                                 label: 'Email',
+                                activeOutlineColor: '#4cd137',
                                 left: <TextInput.Icon name={'email'} />,
                             },
                             rules: {
@@ -135,6 +140,7 @@ export function Login() {
                             type: 'password',
                             textInputProps: {
                                 label: 'Age',
+                                activeOutlineColor: '#4cd137',
                                 left: <TextInput.Icon name={'clock'} />,
                             },
                         },
@@ -143,6 +149,7 @@ export function Login() {
                             type: 'select',
                             textInputProps: {
                                 label: 'Sex',
+                                activeOutlineColor: '#4cd137',
                                 left: <TextInput.Icon name={'account'} />,
                             },
                             rules: {
