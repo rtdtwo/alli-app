@@ -25,9 +25,30 @@ const styles = StyleSheet.create({
   textSmall : {
     fontSize: 10
   },
+  textMedium: {
+    fontSize: 16,
+  },
   textMediumBold: {
     fontSize: 16,
     fontWeight: 'bold'
+  },
+  textSubheadBold: {
+    fontSize: 18,
+    fontWeight: 'bold'
+  },
+  textTitleBold: {
+    fontSize: 20,
+    fontWeight: 'bold'
+  },
+  textTitleBigBold: {
+    fontSize: 24,
+    fontWeight: 'bold'
+  },
+  textSubhead: {
+    fontSize: 18,
+  },
+  textTitle: {
+    fontSize: 20,
   },
   appbarLogo: {
     height: 32,

@@ -20,32 +20,22 @@ const Goal = ({data}) => {
 
     const getCountdown = () => {
         const splitTime = getSplitTime(timeLeft)
-        let result = ''
         if(splitTime.days > 0) {
-            result += `${splitTime.days} days, `
-            result += `${splitTime.hours} hours, `
-            result += `${splitTime.minutes} minutes, `
-            result += `${splitTime.seconds} seconds`
+            return `${splitTime.days} days, ${splitTime.hours} hours, ${splitTime.minutes} minutes, ${splitTime.seconds} seconds`
         } else if(splitTime.hours > 0) {
-            result += `${splitTime.hours} hours, `
-            result += `${splitTime.minutes} minutes, `
-            result += `${splitTime.seconds} seconds`
+            return `${splitTime.hours} hours, ${splitTime.minutes} minutes, ${splitTime.seconds} seconds`
         } else if(splitTime.minutes > 0) {
-            result += `${splitTime.minutes} minutes, `
-            result += `${splitTime.seconds} seconds`
+            return `${splitTime.minutes} minutes, ${splitTime.seconds} seconds`
         } else {
-            result += `${splitTime.seconds} seconds`
+            return `${splitTime.seconds} seconds`
         }
-
-        return result
     }
 
     const style = StyleSheet.create({
         card: {
             marginTop: 16,
             marginLeft: 16,
-            marginRight: 16,
-            zIndex: 0
+            marginRight: 16
         }
     })
 

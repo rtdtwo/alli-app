@@ -9,6 +9,8 @@ import theme from '../theme/themes';
 
 import appLogo from '../assets/croc.png'
 import Goals from '../fragments/Goals';
+import Mood from '../fragments/Mood';
+import Social from '../fragments/Social';
 
 const HomeScreen = () => {
 
@@ -35,9 +37,9 @@ const HomeScreen = () => {
   const ROUTES = {
     dashboard: () => <View />,
     goals: () => <Goals />,
-    mood: () => <View />,
+    mood: () => <Mood />,
     milestones: () => <View />,
-    social: () => <View />,
+    social: () => <Social />,
   }
 
   const [index, setIndex] = React.useState(0);

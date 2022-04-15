@@ -4,7 +4,9 @@ const SERVER_URL = 'https://dhp2022-backend.herokuapp.com'
 const ENDPOINTS = {
     signup: '/signup',
     user: '/user',
-    goal: '/goal'
+    goal: '/goal',
+    mood: '/mood',
+    social: '/social'
 }
 
 const callGet = (url) => {
@@ -56,6 +58,12 @@ const APIS = {
     },
     createGoal: (data) => {
         return callPost(`${SERVER_URL}${ENDPOINTS.goal}`, data)
+    },
+    getMoodsOfUser: (userId) => {
+        return callGet(`${SERVER_URL}${ENDPOINTS.mood}/all?userId=${userId}`)
+    },
+    createSocialProfile: (data) => {
+        return callPost(`${SERVER_URL}${ENDPOINTS.social}/profile`)
     }
 }
 
