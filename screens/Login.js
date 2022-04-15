@@ -3,7 +3,7 @@ import { FormBuilder } from 'react-native-paper-form-builder';
 import { TextInput, Snackbar } from 'react-native-paper';
 import { useForm } from "react-hook-form";
 import styles from  '../theme/styles'
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import * as goTo from './goTo';
 import API from "../network/api"
 import { setCurrentUser } from "../storage/storage";
@@ -22,6 +22,7 @@ export function Login() {
     });
 
     const [visible, setVisible] = React.useState(false);
+    const [myText, setMyText] = useState("My Original Text");
 
     const onDismissSnackBar = () => setVisible(false);
 
@@ -36,16 +37,19 @@ export function Login() {
 
 
         if (data.firstName.length == 0) {
-            //will have to add code for snackbar
-            //some kind of box that will change based on a state
+            setMyText("You are missing your first name!")
             setVisible(true)
         } else if (data.lastName.length == 0) {
-
+            setMyText("You are missing your last name!")
+            setVisible(true)
         }
         else if (data.email.length == 0) {
-
+            setMyText("You are missing your email address!")
+            setVisible(true)
         }
         else if (data.age.length == 0) {
+            setMyText("You are missing your age!")
+            setVisible(true)
         }
         else {
 
@@ -191,7 +195,7 @@ export function Login() {
                             // Do something
                         },
                     }}>
-                    You are missing an input. Please try again.
+                    {myText}
                 </Snackbar>
 
             </View>
