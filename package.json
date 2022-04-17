@@ -25,6 +25,7 @@
     "react-native": "0.64.3",
     "react-native-calendars": "^1.1282.0",
     "react-native-paper": "^4.12.0",
+    "react-native-paper-dropdown": "^1.0.7",
     "react-native-paper-form-builder": "^2.1.2",
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "~3.10.1",

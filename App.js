@@ -7,6 +7,8 @@ import Login from './screens/Login';
 import { navigationRef } from './screens/goTo';
 import Splash from './screens/Splash';
 import Profile from './screens/Profile';
+import GroupList from './screens/GroupList';
+import Group from './screens/Group';
 
 const Stack = createNativeStackNavigator();
 
@@ -31,6 +33,14 @@ const App = () => {
             name="Profile"
             options={{ headerShown: false }}
             component={Profile} />
+          <Stack.Screen
+            name="Group List"
+            options={{ headerShown: false }}
+            component={GroupList} />
+            <Stack.Screen
+              name="Group"
+              options={{ headerShown: false }}
+              component={Group} />
         </Stack.Navigator>
       </NavigationContainer>
     </PaperProvider>

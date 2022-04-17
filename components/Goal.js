@@ -3,6 +3,7 @@ import React from "react"
 import { getSplitTime } from "../utils/utils"
 import styles from "../theme/styles"
 import { StyleSheet } from "react-native"
+import theme from "../theme/themes"
 
 const Goal = ({data}) => {
     const [timeLeft, setTimeLeft] = React.useState(data.deadline * 1000 - new Date().getTime())
@@ -41,8 +42,13 @@ const Goal = ({data}) => {
 
     return <Card mode="outlined" style={style.card}>
         <Card.Content>
-            <Text style={styles.textSmall}>In {getCountdown()}</Text>
-            <Text style={styles.textMediumBold}>{data.eventName}</Text>
+            <Text style={{...styles.textTitle, lineHeight: 32}}>
+                I want to abstain from all addictive substances for my{' '}
+                <Text style={styles.textTitleBold}>{data.eventName}</Text>{' '}
+                which is coming up in <Text style={{...styles.textTitleBold, color: theme.colors.accent}}>{getCountdown()}</Text> 
+            </Text>
+            
+            
         </Card.Content>
     </Card>
 }

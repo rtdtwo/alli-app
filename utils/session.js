@@ -8,8 +8,8 @@ export const logOut = () => {
     replace('Splash')
 }
 
-export const refreshUser = () => {
-    APIS.getUserById(user.id).then(response => {
+export const refreshUser = (id) => {
+    APIS.getUserById(id).then(response => {
         if (response.code == 200) {
             setCurrentUser(response.data)
         }

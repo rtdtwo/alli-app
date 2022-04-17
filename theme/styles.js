@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native"
+import theme from "./themes"
 
 const styles = StyleSheet.create({
   appbar: {
@@ -13,6 +14,12 @@ const styles = StyleSheet.create({
   fabBottomRight: {
     position: 'absolute',
     margin: 16,
+    right: 0,
+    bottom: 0
+  },
+  fabGroupBottomRight: {
+    position: 'absolute',
+    padding: 16,
     right: 0,
     bottom: 0
   },
@@ -48,7 +55,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   textTitle: {
-    fontSize: 20,
+    fontSize: 20
   },
   appbarLogo: {
     height: 32,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { getCurrentUser } from '../storage/storage'
+import { getCurrentUser, setCurrentUser } from '../storage/storage'
 import { View, Button, Image } from 'react-native';
 import * as goTo from './goTo';
 
@@ -9,19 +9,37 @@ import theme from '../theme/themes';
 
 import appLogo from '../assets/croc.png'
 import Goals from '../fragments/Goals';
+import Abstinence from '../fragments/Abstinence';
 import Mood from '../fragments/Mood';
 import Social from '../fragments/Social';
+import APIS from '../network/api';
 
-const HomeScreen = () => {
+const HomeScreen = ({route, navigation}) => {
 
-  const [currentUser, setCurrentUser] = React.useState(undefined)
+  const [loggedInUser, setLoggedInUser] = React.useState(undefined)
+  const [refreshSocial, setRefreshSocial] = React.useState(false)
+
+  const updateUserFromWeb = (user) => {
+    APIS.getUserById(user.id).then(response => {
+      if(response.code == 200) {
+        setLoggedInUser(response.data)
+        setCurrentUser(response.data)
+      }
+    }).catch(e => console.log(e))
+  }
 
   React.useEffect(() => {
-    // See if user is logged in
+    if(route.params?.refreshSocial) {
+      setRefreshSocial(true)
+    }
+  }, [route.params?.refreshSocial])
+
+  React.useEffect(() => {
     getCurrentUser()
       .then(user => {
         if (user) {
-          setCurrentUser(user)
+          setLoggedInUser(user)
+          updateUserFromWeb(user)
         } else {
           // no user logged in, send to Login screen
           goTo.replace('Login')
@@ -35,19 +53,17 @@ const HomeScreen = () => {
 
 
   const ROUTES = {
-    dashboard: () => <View />,
     goals: () => <Goals />,
+    abstinence: () => <Abstinence />,
     mood: () => <Mood />,
-    milestones: () => <View />,
-    social: () => <Social />,
+    social: () => <Social refresh={refreshSocial}/>,
   }
 
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
-    { key: 'dashboard', title: 'Dashboard', icon: 'view-dashboard-outline' },
     { key: 'goals', title: 'Goals', icon: 'bullseye-arrow' },
+    { key: 'abstinence', title: 'Abstinence', icon: 'timer-outline' },
     { key: 'mood', title: 'Mood', icon: 'emoticon-outline' },
-    { key: 'milestones', title: 'Milestones', icon: 'flag-checkered' },
     { key: 'social', title: 'Social', icon: 'account-group-outline' }
   ])
   const renderScene = BottomNavigation.SceneMap(ROUTES)

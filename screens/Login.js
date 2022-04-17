@@ -1,195 +1,153 @@
-import { View, Button, Text, Image } from "react-native";
-import { FormBuilder } from 'react-native-paper-form-builder';
-import { TextInput, Snackbar } from 'react-native-paper';
-import { useForm } from "react-hook-form";
+import { View, Text, StyleSheet } from "react-native";
+import { TextInput, Snackbar, Provider, Button } from 'react-native-paper';
 import styles from "../theme/styles";
 import React, { Fragment } from 'react';
 import * as goTo from './goTo';
 import API from "../network/api"
 import { setCurrentUser } from "../storage/storage";
+import theme from "../theme/themes";
+import DropDown from "react-native-paper-dropdown";
+import { backgroundColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 
 
 export function Login() {
-    const { control, setFocus, handleSubmit } = useForm({
-        defaultValues: {
-            firstName: '',
-            lastName: '',
-            email: '',
-            age: '',
-            sex: ''
-        },
-        mode: 'onChange',
-    });
 
-    const [visible, setVisible] = React.useState(false);
+    const [firstName, setFirstName] = React.useState('')
+    const [lastName, setLastName] = React.useState('')
+    const [email, setEmail] = React.useState('')
+    const [age, setAge] = React.useState('')
+    const [sex, setSex] = React.useState('0')
 
-    const onDismissSnackBar = () => setVisible(false);
+    const [snackbarMessage, setSnackbarMessage] = React.useState(null)
+    const [showSexDropdown, setShowSexDropdown] = React.useState(false)
 
-    const signUp = (data) => {
-        //clean data here
-        data.firstName = data.firstName.trim()
-        data.lastName = data.lastName.trim()
-        data.email = data.email.trim()
-        data.age = data.age.trim()
-
-        console.log(data)
-
+    const signUp = () => {
+        const data = {
+            firstName: firstName.trim(),
+            lastName: lastName.trim(),
+            email: email.trim(),
+            age: age.trim(),
+            sex: sex
+        }
 
         if (data.firstName.length == 0) {
-            //will have to add code for snackbar
-            //some kind of box that will change based on a state
-            setVisible(true)
-        } else if (data.lastName.length == 0) {
-
-        }
-        else if (data.email.length == 0) {
-
-        }
-        else if (data.age.length == 0) {
-        }
-        else {
-
+            setSnackbarMessage('First Name cannot be empty')
+        } else if (data.lastName.trim().length == 0) {
+            setSnackbarMessage('Last Name cannot be empty')
+        } else if (email.trim().length == 0) {
+            setSnackbarMessage('Email cannot be empty')
+        } else if (age.trim().length == 0) {
+            setSnackbarMessage('Age cannot be empty')
+        } else {
             const body = {
                 fName: data.firstName,
                 lName: data.lastName,
-                age: parseInt(data.Age),
+                age: parseInt(data.age),
                 email: data.email,
                 sex: parseInt(data.sex),
             }
 
-            API.signUp(body)
-                .then(response => {
-                    console.log(response)
-                    if (response.code === 201) {
-                        setCurrentUser(response.data).then(() => goTo.replace('Home'))
-                    }
-                }).catch(error => console.log(error))
+            API.signUp(body).then(response => {
+                console.log(response)
+                if (response.code === 201) {
+                    setCurrentUser(response.data).then(() => goTo.replace('Home'))
+                }
+            }).catch(error => console.log(error))
         }
     }
 
-    return (
+    const style = StyleSheet.create({
+        page: {
+            padding: 24,
+        },
+        button: {
+            marginTop: 16,
+            padding: 8,
+            backgroundColor: theme.colors.accent
+        }
+    })
 
-        <Fragment>
+    return <Provider theme={theme}>
+        <View style={style.page}>
 
-            <View>
-                <Text style={styles.title}>Hello!</Text>
-                <Text style={styles.title2}>Let's Get Started.</Text>
-            </View>
+            <Text style={styles.title}>Hello!</Text>
+            <Text style={styles.title2}>Let's Get Started.</Text>
 
-            <View style={styles.form}>
-                <FormBuilder
-                    control={control}
-                    setFocus={setFocus}
-                    formConfigArray={[
-                        [
-                            {
-                                name: 'firstName',
-                                type: 'text',
-                                textInputProps: {
-                                    label: 'First Name',
-                                    left: <TextInput.Icon name={'account'} />,
-                                },
-                                rules: {
-                                    required: {
-                                        value: true,
-                                        message: 'First name is required',
-                                    },
-                                },
-                            },
-                            {
-                                name: 'lastName',
-                                type: 'text',
-                                textInputProps: {
-                                    label: 'Last Name',
-                                    left: <TextInput.Icon name={'account'} />,
-                                },
-                                rules: {
-                                    required: {
-                                        value: true,
-                                        message: 'Last name is required',
-                                    },
-                                },
-                            },
-                        ],
-                        {
-                            name: 'email',
-                            type: 'email',
-                            textInputProps: {
-                                label: 'Email',
-                                left: <TextInput.Icon name={'email'} />,
-                            },
-                            rules: {
-                                required: {
-                                    value: true,
-                                    message: 'Email is required',
-                                },
-                                pattern: {
-                                    value:
-                                        /[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})/,
-                                    message: 'Email is invalid',
-                                },
-                            },
-                        },
-                        {
-                            name: 'age',
-                            type: 'password',
-                            textInputProps: {
-                                label: 'Age',
-                                left: <TextInput.Icon name={'clock'} />,
-                            },
-                        },
-                        {
-                            name: 'sex',
-                            type: 'select',
-                            textInputProps: {
-                                label: 'Sex',
-                                left: <TextInput.Icon name={'account'} />,
-                            },
-                            rules: {
-                                required: {
-                                    value: true,
-                                    message: 'Gender is required',
-                                },
-                            },
-                            options: [
-                                {
-                                    value: 0,
-                                    label: 'Female',
-                                },
-                                {
-                                    value: 1,
-                                    label: 'Male',
-                                },
-                                {
-                                    value: 2,
-                                    label: 'Other',
-                                },
-                            ],
-                        },
+            <TextInput
+                label="First Name"
+                mode="outlined"
+                activeOutlineColor={theme.colors.accent}
+                style={styles.textInput}
+                value={firstName}
+                onChangeText={text => setFirstName(text)} />
 
-                    ]}
-                />
-            </View>
-            <View style={styles.buttonStyle}>
-                <Button
-                    title="Submit" mode={'contained'} onPress={handleSubmit(data => signUp(data))}>
-                    Submit
-                </Button>
-                <Snackbar
-                    visible={visible}
-                    onDismiss={onDismissSnackBar}
-                    action={{
-                        label: 'Back',
-                        onPress: () => {
-                            // Do something
-                        },
-                    }}>
-                    You are missing an input. Please try again.
-                </Snackbar>
+            <TextInput
+                label="Last Name"
+                mode="outlined"
+                activeOutlineColor={theme.colors.accent}
+                style={styles.textInput}
+                value={lastName}
+                onChangeText={text => setLastName(text)} />
 
-            </View>
-        </Fragment>
-    );
+            <TextInput
+                label="Email"
+                mode="outlined"
+                activeOutlineColor={theme.colors.accent}
+                style={styles.textInput}
+                value={email}
+                onChangeText={text => setEmail(text)} />
+
+            <TextInput
+                label="Age"
+                mode="outlined"
+                activeOutlineColor={theme.colors.accent}
+                style={styles.textInput}
+                value={age}
+                onChangeText={text => setAge(text)} />
+
+            <DropDown
+                label='Sex'
+                mode='outlined'
+                visible={showSexDropdown}
+                showDropDown={() => setShowSexDropdown(true)}
+                onDismiss={() => setShowSexDropdown(false)}
+                activeColor={theme.colors.accent}
+                value={sex}
+                setValue={setSex}
+                list={[
+                    {
+                        label: 'Female',
+                        value: '0'
+                    }, {
+                        label: 'Male',
+                        value: '1'
+                    }, {
+                        label: 'Non Binary',
+                        value: '2'
+                    }, {
+                        label: 'Prefer not to say',
+                        value: '3'
+                    }
+                ]} />
+
+            <Button
+                onPress={() => signUp()}
+                style={style.button}
+                mode="outlined"
+                color={theme.colors.white}>
+                Create Account
+            </Button>
+        </View>
+
+
+        <Snackbar
+            visible={snackbarMessage !== null}
+            duration={3000}
+            onDismiss={() => setSnackbarMessage(null)}>
+            {snackbarMessage}
+        </Snackbar>
+
+    </Provider>
 }
 
 
