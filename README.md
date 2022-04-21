@@ -8,7 +8,7 @@ This is the frontend (app) repository. The backend can be found ![here](https://
 - Ravi Teja Lanka (Backend)
 - Srikanth Rao Parcha (Backend)
 - Lisa Touchton (Frontend)
-- 
+
 # How to run?
 Install Expo CLI: https://docs.expo.dev/get-started/installation/
 
