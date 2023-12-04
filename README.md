@@ -1,7 +1,9 @@
-# dhp2022-app
+# alli-app
 A project developed to fulfil course requirements of CIS6930 Digital Health, Spring 2022.
 
-This is the frontend (app) repository. The backend can be found ![here](https://github.com/DHP2022/dhp2022-backend).
+This is the frontend (app) repository. The backend can be found ![here](https://github.com/rtdtwo/alli-backend).
+
+https://github.com/rtdtwo/dhp2022-app/assets/24786834/1bf4a7f6-5967-4fea-9b00-464cce5f2539
 
 # Personnel
 - Rishabh Tatiraju (Frontend/Backend)
